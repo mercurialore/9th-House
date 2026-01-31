@@ -45,3 +45,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.openPortal = openPortal;
 window.showInfo = showInfo;
+
