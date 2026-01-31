@@ -35,11 +35,13 @@
   <!-- 9TH HOUSE PLANET SELECTION -->
   <div id="house" class="screen">
     <h1>Welcome to the 9th House ♍</h1>
-    <p>Select a planetary placement to explore:</p>
+    <p>Select a star to explore:</p>
 
-    <div class="planet-card" onclick="showInfo('sun')">☉ Sun</div>
-    <div class="planet-card" onclick="showInfo('mercury')">☿ Mercury</div>
-    <div class="planet-card" onclick="showInfo('venus')">♀ Venus</div>
+    <div class="planet-container">
+      <div class="planet-card" onclick="showInfo('sun')">☉ Sun</div>
+      <div class="planet-card" onclick="showInfo('mercury')">☿ Mercury</div>
+      <div class="planet-card" onclick="showInfo('venus')">♀ Venus</div>
+    </div>
 
     <div id="planet-info" class="house-text"></div>
   </div>
@@ -47,3 +49,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
