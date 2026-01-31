@@ -26,15 +26,37 @@ body {
   display: block;
 }
 
-/* ---------- STARS ---------- */
+/* ---------- STARS BACKGROUND (CSS ONLY) ---------- */
 .stars {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: black url('https://i.ibb.co/fF0pD5F/stars.png') repeat;
+  background: black;
   z-index: -2;
+  overflow: hidden;
+}
+
+/* Create small white dots for stars */
+.stars::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: transparent;
+  box-shadow:
+    50px 100px white,
+    200px 150px white,
+    400px 300px white,
+    600px 200px white,
+    800px 100px white,
+    1000px 300px white,
+    1200px 200px white,
+    150px 50px white,
+    300px 250px white,
+    700px 400px white,
+    900px 50px white;
 }
 
 /* ---------- PLANET CONTAINER ---------- */
@@ -157,4 +179,5 @@ button:hover {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
 }
