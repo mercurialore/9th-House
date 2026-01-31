@@ -34,21 +34,34 @@ body {
   width: 100%;
   height: 100%;
   background: black url('https://i.ibb.co/fF0pD5F/stars.png') repeat;
-  z-index: -1;
+  z-index: -2;
+}
+
+/* ---------- PLANET CONTAINER ---------- */
+.planet-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ---------- PLANET CARDS ---------- */
 .planet-card {
+  position: relative;
+  z-index: 2;
   display: inline-block;
-  padding: 20px 40px;
-  margin: 15px;
+  padding: 25px 45px;
   border-radius: 15px;
   background: linear-gradient(135deg, var(--emerald), var(--sage));
   color: var(--gold);
-  cursor: pointer;
   font-size: 1.8rem;
   font-weight: bold;
-  box-shadow: 0 0 25px rgba(4, 99, 7, 0.5);
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(4, 99, 7, 0.6);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
