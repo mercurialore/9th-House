@@ -1,56 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tye’s 9th House ♍</title>
+// ---------- SCREEN TRANSITIONS ----------
+const inviteScreen = document.getElementById("invite");
+const loadingScreen = document.getElementById("loading");
+const houseScreen = document.getElementById("house");
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
-</head>
+// ---------- PLANET INFO ----------
+const planetInfo = document.getElementById("planet-info");
 
-<body>
+function showScreen(screenToShow) {
+  [inviteScreen, loadingScreen, houseScreen].forEach(screen => {
+    screen.classList.remove("active");
+  });
+  screenToShow.classList.add("active");
+}
 
-  <!-- BACKGROUND ELEMENTS -->
-  <div class="stars"></div>
+// ---------- PORTAL TRANSITION ----------
+function openPortal() {
+  showScreen(loadingScreen);
+  setTimeout(() => {
+    showScreen(houseScreen);
+  }, 3000); // 3 second loading effect
+}
 
-  <div class="planet sun"></div>
-  <div class="planet mercury"></div>
-  <div class="planet venus"></div>
+// ---------- PLANET DESCRIPTION DISPLAY ----------
+function showInfo(planet) {
+  const info = {
+    sun: "Tye's rejoiced Virgo Sun is his guiding luminary. In the 9th House his visibility and presence is strong and his Sun is sitting in its throne. When the Sun's hot and life-giving temperament sits in Virgo's cold, dry, mutable home it creates someone like Tye whose guiding luminary has aligned him on the path of philosophical, spiritual and astrological truth. It gives him purpose, it allows him to recognize himself better through these ideologies, and in return he shares his wisdom with the world.",
 
-  <!-- VIRGO GLYPH BACKGROUND -->
-  <div class="virgo">♍</div>
+    mercury: "Tye's domicile and exalted Virgo Mercury is both home and sitting on her throne. The natural dry temperament of Mercury is situated in Virgo's cold, dry and mutable abode. Here she functions as her natural state intends. Tactfully, productively, and purposefully. Her flexible nature allows her to connect collected patterns and translate them within the physical plane and the material plane into the professor of the heavens that we love and know so well.",
 
-  <!-- INVITATION SCREEN -->
-  <div id="invite" class="screen active">
-    <h1>♍ You’ve been invited to Tye’s 9th House ♍</h1>
-    <p>Would you like to enter?</p>
-    <button onclick="openPortal()">Yes</button>
-    <button onclick="openPortal()">Yes</button>
-  </div>
+    venus: "Tye's 9th House Venus is a representation of where he's called and inspired to experience the joys life has to offer. When Venus's moist and fertile temperament sits in Virgo's cold, dry, mutable home, Venus has no choice but to adjust to the structure of Virgo's abode. Here, Venus acts demurely; she's cautious, considerate, and eloquent. She's thoughtful about what she creates, how she forms union with others, and holds her creations and others to the same standards she holds herself up to. To have walked along Tye's 9th house and encountered his Venus is to be seen and loved."
+  };
+  
+  planetInfo.innerText = info[planet];
+}
 
-  <!-- LOADING / PORTAL SCREEN -->
-  <div id="loading" class="screen">
-    <div class="portal"></div>
-    <p>Loading 9th House portal…</p>
-  </div>
+// ---------- PAGE FADE-IN ----------
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.style.opacity = 0;
+  setTimeout(() => {
+    document.body.style.transition = "opacity 1.5s ease";
+    document.body.style.opacity = 1;
+  }, 100);
+});
 
-  <!-- 9TH HOUSE SCREEN -->
-  <div id="house" class="screen">
-    <h1>Welcome to the 9th House ♍</h1>
-
-    <video controls autoplay muted playsinline>
-      <source src="tye-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-    <div class="house-text">
-      Here you’ll find Tye’s philosophical, astrological,
-      and divination dreams.
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="script.js"></script>
-
-</body>
-</html>
+// ---------- EXPOSE FUNCTIONS GLOBALLY ----------
+window.openPortal = openPortal;
+window.showInfo = showInfo;
