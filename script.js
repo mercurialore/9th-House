@@ -22,6 +22,16 @@ function showInfo(planet){
   planetInfo.innerText = info[planet];
 }
 
+function exitHouse() {
+  const planets = document.querySelectorAll('.planet');
+  planets.forEach(p => { p.classList.add('exit-planet'); });
+
+  setTimeout(() => {
+    planets.forEach(p => { p.classList.remove('exit-planet'); });
+    showScreen(inviteScreen);
+  }, 2000);
+}
+
 document.addEventListener("DOMContentLoaded", ()=>{
   document.body.style.opacity=0;
   setTimeout(()=>{ document.body.style.transition="opacity 1.5s ease"; document.body.style.opacity=1; },100);
@@ -29,3 +39,4 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 window.openPortal = openPortal;
 window.showInfo = showInfo;
+window.exitHouse = exitHouse;
