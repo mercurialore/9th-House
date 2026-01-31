@@ -1,147 +1,47 @@
-/* ---------- COLORS ---------- */
-:root {
-  --emerald: #046307;
-  --sage: #a8c686;
-  --gold: #d4af37;
+// ---------- SCREEN TRANSITIONS ----------
+const inviteScreen = document.getElementById("invite");
+const loadingScreen = document.getElementById("loading");
+const houseScreen = document.getElementById("house");
+
+// ---------- PLANET INFO ----------
+const planetInfo = document.getElementById("planet-info");
+
+function showScreen(screenToShow) {
+  [inviteScreen, loadingScreen, houseScreen].forEach(screen => {
+    screen.classList.remove("active");
+  });
+  screenToShow.classList.add("active");
 }
 
-/* ---------- PAGE RESET ---------- */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", sans-serif;
-  background-color: black;
-  overflow-x: hidden;
-  color: var(--gold);
+// ---------- PORTAL TRANSITION ----------
+function openPortal() {
+  showScreen(loadingScreen);
+  setTimeout(() => {
+    showScreen(houseScreen);
+  }, 3000);
 }
 
-/* ---------- SCREENS ---------- */
-.screen {
-  display: none;
-  text-align: center;
-  padding: 50px 20px;
+// ---------- PLANET DESCRIPTION DISPLAY ----------
+function showInfo(planet) {
+  const info = {
+    sun: "Tye's rejoiced Virgo Sun is his guiding luminary. In the 9th House his visibility and presence is strong and his Sun is sitting in its throne. When the Sun's hot and life-giving temperament sits in Virgo's cold, dry, mutable home it creates someone like Tye whose guiding luminary has aligned him on the path of philosophical, spiritual and astrological truth. It gives him purpose, it allows him to recognize himself better through these ideologies, and in return he shares his wisdom with the world.",
+
+    mercury: "Tye's domicile and exalted Virgo Mercury is both home and sitting on her throne. The natural dry temperament of Mercury is situated in Virgo's cold, dry and mutable abode. Here she functions as her natural state intends. Tactfully, productively, and purposefully. Her flexible nature allows her to connect collected patterns and translate them within the physical plane and the material plane into the professor of the heavens that we love and know so well.",
+
+    venus: "Tye's 9th House Venus is a representation of where he's called and inspired to experience the joys life has to offer. When Venus's moist and fertile temperament sits in Virgo's cold, dry, mutable home, Venus has no choice but to adjust to the structure of Virgo's abode. Here, Venus acts demurely; she's cautious, considerate, and eloquent. She's thoughtful about what she creates, how she forms union with others, and holds her creations and others to the same standards she holds herself up to. To have walked along Tye's 9th house and encountered his Venus is to be seen and loved."
+  };
+  
+  planetInfo.innerText = info[planet];
 }
 
-.screen.active {
-  display: block;
-}
+// ---------- PAGE FADE-IN ----------
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.style.opacity = 0;
+  setTimeout(() => {
+    document.body.style.transition = "opacity 1.5s ease";
+    document.body.style.opacity = 1;
+  }, 100);
+});
 
-/* ---------- STARS ---------- */
-.stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black url('https://i.ibb.co/fF0pD5F/stars.png') repeat;
-  z-index: -1;
-}
-
-/* ---------- PLANET CARDS ---------- */
-.planet-card {
-  display: inline-block;
-  padding: 20px 40px;
-  margin: 15px;
-  border-radius: 15px;
-  background: linear-gradient(135deg, var(--emerald), var(--sage));
-  color: var(--gold);
-  cursor: pointer;
-  font-size: 1.8rem;
-  font-weight: bold;
-  box-shadow: 0 0 25px rgba(4, 99, 7, 0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.planet-card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 35px rgba(4, 99, 7, 0.9);
-}
-
-/* ---------- HOUSE TEXT ---------- */
-.house-text {
-  margin-top: 25px;
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--gold);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.5;
-}
-
-/* ---------- BUTTONS ---------- */
-button {
-  font-size: 1.2rem;
-  padding: 12px 30px;
-  margin: 10px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  background: linear-gradient(135deg, var(--emerald), var(--sage));
-  color: var(--gold);
-  box-shadow: 0 0 25px rgba(4, 99, 7, 0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 35px rgba(4, 99, 7, 0.9);
-}
-
-/* ---------- PORTAL ---------- */
-.portal {
-  width: 150px;
-  height: 150px;
-  margin: 30px auto;
-  border-radius: 50%;
-  border: 4px solid var(--gold);
-  box-shadow: 0 0 40px var(--emerald);
-  animation: spin 3s linear infinite;
-}
-
-/* ---------- PLANET ELEMENTS (decorative) ---------- */
-.planet {
-  position: absolute;
-  border-radius: 50%;
-  z-index: -1;
-}
-
-.planet.sun {
-  width: 50px;
-  height: 50px;
-  top: 10%;
-  left: 20%;
-  background: radial-gradient(circle, var(--gold), var(--emerald));
-}
-
-.planet.mercury {
-  width: 30px;
-  height: 30px;
-  top: 30%;
-  left: 70%;
-  background: radial-gradient(circle, var(--sage), var(--emerald));
-}
-
-.planet.venus {
-  width: 40px;
-  height: 40px;
-  top: 60%;
-  left: 40%;
-  background: radial-gradient(circle, var(--gold), var(--sage));
-}
-
-/* ---------- VIRGO GLYPH ---------- */
-.virgo {
-  font-size: 5rem;
-  position: fixed;
-  bottom: 10px;
-  right: 20px;
-  opacity: 0.6;
-  color: var(--gold);
-}
-
-/* ---------- SPIN ANIMATION ---------- */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+window.openPortal = openPortal;
+window.showInfo = showInfo;
