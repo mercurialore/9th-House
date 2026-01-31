@@ -24,10 +24,10 @@ function showInfo(planet){
 
 function exitHouse() {
   const planets = document.querySelectorAll('.planet');
-  planets.forEach(p => { p.classList.add('exit-planet'); });
+  planets.forEach(p => p.classList.add('exit-planet'));
 
   setTimeout(() => {
-    planets.forEach(p => { p.classList.remove('exit-planet'); });
+    planets.forEach(p => p.classList.remove('exit-planet'));
     showScreen(inviteScreen);
   }, 2000);
 }
