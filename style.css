@@ -1,10 +1,12 @@
+
+   
 :root {
   --emerald: #046307;
   --sage: #a8c686;
   --gold: #d4af37;
 }
 
-/* ---------- PAGE RESET ---------- */
+/* PAGE RESET */
 body {
   margin: 0;
   padding: 0;
@@ -14,7 +16,7 @@ body {
   color: var(--gold);
 }
 
-/* ---------- SCREENS ---------- */
+/* SCREENS */
 .screen {
   display: none;
   text-align: center;
@@ -22,56 +24,24 @@ body {
 }
 .screen.active { display: block; }
 
-/* ---------- GOLD STARS BACKGROUND ---------- */
+/* STARS */
 .stars {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: black;
   z-index: -3;
   overflow: hidden;
+  background: black;
 }
 
-/* Generate many small stars randomly */
-.stars::before {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: var(--gold);
-  box-shadow:
-    5vw 10vh var(--gold), 15vw 30vh var(--gold), 25vw 50vh var(--gold),
-    35vw 70vh var(--gold), 45vw 20vh var(--gold), 55vw 60vh var(--gold),
-    65vw 40vh var(--gold), 75vw 80vh var(--gold), 85vw 10vh var(--gold),
-    95vw 30vh var(--gold), 10vw 90vh var(--gold), 20vw 15vh var(--gold),
-    30vw 55vh var(--gold), 40vw 75vh var(--gold), 50vw 25vh var(--gold),
-    60vw 35vh var(--gold), 70vw 65vh var(--gold), 80vw 45vh var(--gold),
-    90vw 85vh var(--gold);
-}
-
-.stars::after {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: var(--gold);
-  box-shadow:
-    7vw 20vh var(--gold), 17vw 40vh var(--gold), 27vw 60vh var(--gold),
-    37vw 80vh var(--gold), 47vw 30vh var(--gold), 57vw 70vh var(--gold),
-    67vw 50vh var(--gold), 77vw 90vh var(--gold), 87vw 20vh var(--gold),
-    97vw 40vh var(--gold), 12vw 95vh var(--gold), 22vw 25vh var(--gold);
-  opacity: 0.8;
-}
-
-/* ---------- PLANET BACKGROUND ELEMENTS ---------- */
+/* PLANETS */
 .planet {
   position: absolute;
   border-radius: 50%;
   z-index: -2;
 }
-
 .planet.saturn {
   width: 70px;
   height: 70px;
@@ -91,7 +61,6 @@ body {
   left:-15px;
   transform: rotate(-20deg);
 }
-
 .planet.jupiter {
   width: 50px;
   height: 50px;
@@ -99,7 +68,6 @@ body {
   left: 20%;
   background: radial-gradient(circle, #d4af37, #a87f3e);
 }
-
 .planet.mars {
   width: 40px;
   height: 40px;
@@ -108,7 +76,7 @@ body {
   background: radial-gradient(circle, #c1440e, #881f0c);
 }
 
-/* ---------- VIRGO GLYPH ---------- */
+/* VIRGO GLYPH */
 .virgo {
   font-size: 5rem;
   position: fixed;
@@ -118,7 +86,7 @@ body {
   color: var(--gold);
 }
 
-/* ---------- PLANET CARDS / TAROT BUTTONS ---------- */
+/* PLANET CARDS */
 .planet-container {
   display: flex;
   justify-content: space-around;
@@ -126,7 +94,6 @@ body {
   flex-wrap: nowrap;
   margin-top: 50px;
 }
-
 .planet-card {
   display: flex;
   justify-content: center;
@@ -145,13 +112,12 @@ body {
   flex-direction: column;
   padding: 20px;
 }
-
 .planet-card:hover {
   transform: scale(1.15);
   box-shadow: 0 0 35px rgba(4,99,7,0.9);
 }
 
-/* ---------- HOUSE TEXT ---------- */
+/* HOUSE TEXT */
 .house-text {
   margin-top: 30px;
   font-style: italic;
@@ -163,7 +129,7 @@ body {
   line-height: 1.6;
 }
 
-/* ---------- BUTTONS ---------- */
+/* BUTTONS */
 button {
   font-size: 1.2rem;
   padding: 15px 40px;
@@ -176,13 +142,12 @@ button {
   box-shadow: 0 0 25px rgba(4,99,7,0.6);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-
 button:hover {
   transform: scale(1.08);
   box-shadow: 0 0 35px rgba(4,99,7,0.9);
 }
 
-/* ---------- EXIT BUTTON FIXED ---------- */
+/* EXIT BUTTON FIXED */
 #exitBtn {
   position: fixed;
   bottom: 20px;
@@ -191,11 +156,7 @@ button:hover {
   z-index: 10;
 }
 
-#exitBtn:hover {
-  transform: translateX(-50%) scale(1.08);
-}
-
-/* ---------- PORTAL ---------- */
+/* PORTAL */
 .portal {
   width: 150px;
   height: 150px;
@@ -206,13 +167,13 @@ button:hover {
   animation: spin 3s linear infinite;
 }
 
-/* ---------- SPIN ANIMATION ---------- */
+/* SPIN ANIMATION */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* ---------- EXIT ANIMATION FOR PLANETS ---------- */
+/* EXIT ANIMATION */
 @keyframes exit-sway {
   0%   { transform: translate(0,0) rotate(0deg); opacity: 1; }
   25%  { transform: translate(-50px, -50px) rotate(15deg); opacity: 0.9; }
@@ -220,7 +181,15 @@ button:hover {
   75%  { transform: translate(-150px, -150px) rotate(30deg); opacity: 0.5; }
   100% { transform: translate(-200px, -200px) rotate(360deg); opacity: 0; }
 }
-
 .exit-planet {
   animation: exit-sway 2s forwards;
+}
+
+/* STAR ELEMENT */
+.star {
+  position: absolute;
+  background: var(--gold);
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
 }
