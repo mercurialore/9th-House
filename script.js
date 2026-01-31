@@ -25,16 +25,30 @@ function showInfo(planet){
 function exitHouse() {
   const planets = document.querySelectorAll('.planet');
   planets.forEach(p => p.classList.add('exit-planet'));
-
   setTimeout(() => {
     planets.forEach(p => p.classList.remove('exit-planet'));
     showScreen(inviteScreen);
   }, 2000);
 }
 
+// GENERATE GOLD STARS
+function createStars(numStars = 150){
+  const starsContainer = document.querySelector('.stars');
+  for(let i = 0; i < numStars; i++){
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.top = Math.random() * 100 + 'vh';
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.width = (Math.random() * 2 + 1) + 'px';
+    star.style.height = star.style.width;
+    starsContainer.appendChild(star);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", ()=>{
   document.body.style.opacity=0;
   setTimeout(()=>{ document.body.style.transition="opacity 1.5s ease"; document.body.style.opacity=1; },100);
+  createStars();
 });
 
 window.openPortal = openPortal;
